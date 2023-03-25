@@ -2,30 +2,16 @@
 
 This repository contains the programs for the Data Structure Lab in C Programming.
 
-## Table of Contents
-
-- [Lab 1](#lab-1)
-- [Lab 2](#lab-2)
-- [Lab 3](#lab-3)
-- [Lab 4](#lab-4)
-- [Lab 5](#lab-5)
-- [Lab 6](#lab-6)
-- [Lab 7](#lab-7)
-- [Lab 8](#lab-8)
-- [Lab 9](#lab-9)
-- [Lab 10](#lab-10)
-- [Lab 11](#lab-11)
-- [Lab 12](#lab-12)
-
 ## Lab 1
 
 Design, Develop and Implement a menu driven Program in C for the
 following array operations.
-a) Creating an array of N Integer Elements
-b) Display of array Elements with Suitable Headings
-c) Inserting an Element (ELEM) at a given valid Position (POS)
-d) Deleting an Element at a given valid Position(POS)
-e) Exit.
+
+- a.Creating an array of N Integer Elements
+- b.Display of array Elements with Suitable Headings
+- c.Inserting an Element (ELEM) at a given valid Position (POS)
+- d.Deleting an Element at a given valid Position(POS)
+- e.Exit.
 Support the program with functions for each of the above
 operations.
 
@@ -44,11 +30,55 @@ dynamically to EMPLOYEE instances.
 Write a c program to implement STACK using array
 STACK of Integers (Array Implementation of Stack with maximum
 size MAX)
-a) Push an Element on to Stack
-b) Pop an Element from Stack
-c) Demonstrate how Stack can be used to check Palindrome
-d) Demonstrate Overflow and Underflow situations on Stack
-e) Display the status of Stack
-f) Exit
+
+- a.Push an Element on to Stack
+- b.Pop an Element from Stack
+- c.Demonstrate how Stack can be used to check Palindrome
+- d.Demonstrate Overflow and Underflow situations on Stack
+- e.Display the status of Stack
+- f.Exit
 Support the program with appropriate functions for each of the
 above operations
+
+## Lab 4
+
+Enter the infix expression to convert to postfix expression
+Write a C program to convert and print a given valid parenthesized
+infix arithmetic expression to postfix expression. The expression
+consists of single-character operands and binary operators + - * /.
+Apply the concept of stack data structure to solve this problem.
+
+## Lab 5
+
+C Program to evaluate value of a postfix expression using stack
+
+## Lab 6
+
+Write recursive functions for the following and demonstrate their use.
+
+- a.Binary Search
+- b.Tower of Hanoi problem.
+
+## Lab 7
+
+Queue in Data Structure | Queue implementation using array in C Programming
+
+## Lab 8
+
+Write a C program to simulate the working of a circular Queue of
+integers. Represent circular queue element as a structure and use
+array of structures as your implementation method. Start and end of
+the circular queue must be identified by an empty array element.
+
+## Lab 9
+
+Write a program to create a singly linked list that maintains a
+list of names in alphabetical order. Implement the following
+operations on the list.
+
+- a. Insert a new name
+- b. Delete a specified name
+
+## Lab 10
+
+Write a C program to maintain a stack of integers using linked implementation method.

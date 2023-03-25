@@ -1,5 +1,4 @@
-// Write a C program to maintain a stack of integers using linked
-// implementation method.
+// Write a C program to maintain a stack of integers using linked implementation method.
 
 #include <stdio.h>
 #include <stdlib.h>
