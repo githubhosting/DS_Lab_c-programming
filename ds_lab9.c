@@ -6,74 +6,96 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-struct stud
+#include <string.h>
+typedef struct node
 {
-    int id;
-    char name[20];
-    int sem;
-    struct stud *next;
-};
+    char name[50];
+    struct node *next;
+} Node;
 
-typedef struct stud NODE;
+Node *head = NULL;
 
-NODE *head;
-NODE *insert_f();
-
-void main()
+void insert(char *name)
 {
-    int ch;
-    head = NULL;
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    strcpy(newNode->name, name);
+    newNode->next = NULL;
+    if (head == NULL || strcmp(head->name, name) >= 0)
+    {
+        newNode->next = head;
+        head = newNode;
+    }
+    else
+    {
+        Node *current = head;
+        while (current->next != NULL && strcmp(current->next->name, name) < 0)
+            current = current->next;
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+}
+
+void delete(char *name)
+{
+    Node *temp = head, *prev;
+    if (temp != NULL && strcmp(temp->name, name) == 0)
+    {
+        head = temp->next;
+        free(temp);
+        return;
+    }
+    while (temp != NULL && strcmp(temp->name, name) != 0)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL)
+        return;
+    prev->next = temp->next;
+    free(temp);
+}
+void display()
+{
+    Node *ptr = head;
+    printf("\nNames in the List: ");
+    while (ptr != NULL)
+    {
+        printf("%s ", ptr->name);
+        ptr = ptr->next;
+    }
+}
+
+int main()
+{
+    int choice;
+    char name[50];
     while (1)
     {
-        printf("1.Insert at front \n");
-        printf("2.Display \n");
-        printf("3.Exit \n");
-        printf("Enter your choice : ");
-        scanf("%d", &ch);
-        switch (ch)
+        printf("\n1.Insert a name ");
+        printf("\n2.Delete a name ");
+        printf("\n3.Display the list ");
+        printf("\n4.Exit ");
+        printf("\nEnter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
         {
         case 1:
-            head = insert_f();
+            printf("Enter the name to be inserted : ");
+            scanf("%s", name);
+            insert(name);
             break;
         case 2:
-            display();
+            printf("Enter the name to be deleted : ");
+            scanf("%s", name);
+            delete (name);
             break;
         case 3:
-            exit(0);
+            display();
+            break;
+        case 4:
+            exit(1);
+        default:
+            printf("Wrong choice ");
         }
     }
 }
-
-NODE *insert_f()
-{
-    NODE *temp;
-    temp = (NODE *)malloc(sizeof(NODE));
-    printf("Enter the id : ");
-    scanf("%d", &temp->id);
-    printf("Enter the name : ");
-    scanf("%s", temp->name);
-    printf("Enter the sem : ");
-    scanf("%d", &temp->sem);
-    temp->next = head;
-    return temp;
-}
-
-void display()
-{
-    NODE *temp;
-    if (head == NULL)
-    {
-        printf("List is empty \n");
-        return;
-    }
-    temp = head;
-    printf("The list is : \n");
-    printf("ID \t NAME \t SEM \n");
-    while (temp != NULL)
-    {
-        printf("%d \t %s \t %d \t \n", temp->id, temp->name, temp->sem);
-        temp = temp->next;
-    }
-}
-

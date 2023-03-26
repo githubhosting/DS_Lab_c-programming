@@ -8,8 +8,8 @@
 
 struct CircularQueue
 {
-    int data;
-    int next;
+    int data; // data to be stored in the queue
+    int next; // index of the next element in the queue
 };
 
 struct CircularQueue queue[MAX_SIZE];
@@ -47,25 +47,25 @@ void enqueue(int value)
 int dequeue()
 {
     int value;
-    if (start == -1)
+    if (start == -1) // queue is empty 
     {
         printf("Circular Queue is empty\n");
         return -1;
     }
-    value = queue[start].data;
-    if (start == end)
+    value = queue[start].data; 
+    if (start == end) // only one element in the queue
     {
-        start = end = -1;
+        start = end = -1; 
     }
-    else if (start == MAX_SIZE - 1)
+    else if (start == MAX_SIZE - 1) // last element in the queue
     {
-        start = 0;
+        start = 0; 
     }
-    else
+    else // more than one element in the queue
     {
-        start++;
+        start++; 
     }
-    return value;
+    return value; 
 }
 
 // Function to display the elements in the queue
