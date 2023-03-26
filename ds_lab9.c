@@ -13,16 +13,16 @@ typedef struct node
     struct node *next;
 } Node;
 
-Node *head = NULL;
+Node *head = NULL; // head of the list
 
 void insert(char *name)
 {
     Node *newNode = (Node *)malloc(sizeof(Node));
-    strcpy(newNode->name, name);
+    strcpy(newNode->name, name); // copy name to newNode->name
     newNode->next = NULL;
-    if (head == NULL || strcmp(head->name, name) >= 0)
+    if (head == NULL || strcmp(head->name, name) >= 0) // insert at the beginning 
     {
-        newNode->next = head;
+        newNode->next = head; 
         head = newNode;
     }
     else

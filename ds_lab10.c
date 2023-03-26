@@ -3,18 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct StackNode
+typedef struct node
 {
     int data;
-    struct StackNode *next;
-};
+    struct node *next;
+} Node;
 
-struct StackNode *top = NULL;
+Node *top = NULL;
 
 // Function to add an item to stack. It increases top by 1
 void push(int item)
 {
-    struct StackNode *temp = (struct StackNode *)malloc(sizeof(struct StackNode));
+    Node *temp = (Node *)malloc(sizeof(Node));
     temp->data = item;
     temp->next = top;
     top = temp;
@@ -28,9 +28,10 @@ int pop()
         printf("Stack is empty\n");
         return -1;
     }
-    int item = top->data;
-    struct StackNode *temp = top;
+    Node *temp = top;
     top = top->next;
+
+    int item = top->data;
     free(temp);
     return item;
 }
@@ -54,7 +55,7 @@ void display()
         printf("Stack is empty\n");
         return;
     }
-    struct StackNode *temp = top;
+    Node *temp = top;
     printf("Stack: ");
     while (temp != NULL)
     {
