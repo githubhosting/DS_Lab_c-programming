@@ -42,6 +42,7 @@ int main()
     scanf("%s", exp);
     printf("\n");
     e = exp; // e is a pointer to expression
+    printf("The postfix expression is: ");
 
     while (*e != '\0')
     {
