@@ -76,9 +76,27 @@ Write a program to create a singly linked list that maintains a
 list of names in alphabetical order. Implement the following
 operations on the list.
 
-- a. Insert a new name
-- b. Delete a specified name
+- a.Insert a new name
+- b.Delete a specified name
 
 ## Lab 10
 
 Write a C program to maintain a stack of integers using linked implementation method.
+
+## Lab 11
+
+Write a C program to support the following operations on a doubly
+linked list.
+
+- a.Insert a new node to the left of the node whose key value is read
+as an input.
+- b.Delete a node with given data, if it is found otherwise display
+appropriate error message.
+
+## Lab 12
+
+Write a C program
+
+- a.To construct a binary tree of integers.
+- b.To traverse the tree using inorder, preorder and postorder
+traversal methods.
