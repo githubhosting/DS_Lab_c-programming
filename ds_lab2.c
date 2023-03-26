@@ -26,7 +26,7 @@ int main()
 {
     int n, i;
     char dept_name[MAX_DEPTLEN];
-    EMPLOYEE *emp_array;
+    EMPLOYEE *emp_array; // Pointer to structure
 
     printf("Enter the number of employees: ");
     scanf("%d", &n);
@@ -55,6 +55,7 @@ int main()
     return 0;
 }
 
+// Function to find the total salary of employees of a specified department
 float total_salary_by_dept(EMPLOYEE *emp_array, int n, char *dept_name)
 {
     float total_salary = 0;

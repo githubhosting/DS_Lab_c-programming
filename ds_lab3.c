@@ -64,7 +64,7 @@ void check_palindrome()
         push(str[i]);
     for (j = 0; str[j] != '\0'; j++)
     {
-        if (str[j] != pop())
+        if (str[j] != pop()) // str[j] is first element of string and pop() is last element of string
         {
             flag = 1;
             break;

@@ -46,7 +46,7 @@ int main()
 
     while (*e != '\0')
     {
-        if (isalnum(*e))
+        if (isalnum(*e)) // isalnum() checks if the character is alphanumeric
             printf("%c ", *e);
         else if (*e == '(')
             push(*e);
