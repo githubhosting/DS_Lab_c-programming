@@ -53,7 +53,6 @@ void display()
             printf("%d ", stack[i]);
     }
 }
-// c) Demonstrate how Stack can be used to check Palindrome
 
 void check_palindrome()
 {
