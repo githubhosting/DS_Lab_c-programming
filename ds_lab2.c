@@ -20,7 +20,19 @@ typedef struct employee
     float Salary;
 } EMPLOYEE;
 
-float total_salary_by_dept(EMPLOYEE *emp_array, int n, char *dept_name);
+// Function to find the total salary of employees of a specified department
+float total_salary_by_dept(EMPLOYEE *emp_array, int n, char *dept_name)
+{
+    float total_salary = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (strcmp(emp_array[i].Dept_name, dept_name) == 0)
+        {
+            total_salary += emp_array[i].Salary;
+        }
+    }
+    return total_salary;
+}
 
 int main()
 {
@@ -53,18 +65,4 @@ int main()
     free(emp_array);
 
     return 0;
-}
-
-// Function to find the total salary of employees of a specified department
-float total_salary_by_dept(EMPLOYEE *emp_array, int n, char *dept_name)
-{
-    float total_salary = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (strcmp(emp_array[i].Dept_name, dept_name) == 0)
-        {
-            total_salary += emp_array[i].Salary;
-        }
-    }
-    return total_salary;
 }

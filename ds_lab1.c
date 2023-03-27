@@ -14,46 +14,6 @@
 int arr[MAX];
 int pos, elem, n;
 
-void create();
-void display();
-void insert();
-void delete();
-
-int main()
-{
-    int choice;
-    int pos = 1;
-    while (1)
-    {
-        printf("\n1.Create an array ");
-        printf("\n2.Display the array ");
-        printf("\n3.Insert an element ");
-        printf("\n4.Delete an element ");
-        printf("\n5.Exit ");
-        printf("\nEnter your choice : ");
-        scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            create();
-            break;
-        case 2:
-            display();
-            break;
-        case 3:
-            insert();
-            break;
-        case 4:
-            delete ();
-            break;
-        case 5:
-            exit(1);
-        default:
-            printf("Wrong choice ");
-        }
-    }
-}
-
 void create()
 {
     int i;
@@ -106,4 +66,39 @@ void delete()
     for (i = pos; i <= n - 1; i++)
         arr[i] = arr[i + 1];
     n = n - 1;
+}
+
+int main()
+{
+    int choice;
+    int pos = 1;
+    while (1)
+    {
+        printf("\n1.Create an array ");
+        printf("\n2.Display the array ");
+        printf("\n3.Insert an element ");
+        printf("\n4.Delete an element ");
+        printf("\n5.Exit ");
+        printf("\nEnter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            create();
+            break;
+        case 2:
+            display();
+            break;
+        case 3:
+            insert();
+            break;
+        case 4:
+            delete ();
+            break;
+        case 5:
+            exit(1);
+        default:
+            printf("Wrong choice ");
+        }
+    }
 }

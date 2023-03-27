@@ -66,7 +66,7 @@ void check_palindrome()
     {
         if (str[j] != pop()) // str[j] is first element of string and pop() is last element of string
         {
-            flag = 1;
+            flag = 1; // if first and last elements are not same then flag is set to 1
             break;
         }
     }
