@@ -8,121 +8,121 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node
+typedef struct node
 {
     int data;
     struct node *next;
     struct node *prev;
-};
+} Node;
 
-struct node *head = NULL;
-struct node *tail = NULL;
+Node *head = NULL;
 
-void insert(int data);
-void display();
-void delete(int data);
-
-int main()
+void insert(int data, int key)
 {
-    int choice, data;
-    while (1)
-    {
-        printf("\n1.Insert an element ");
-        printf("\n2.Display the list ");
-        printf("\n3.Delete an element ");
-        printf("\n4.Exit ");
-        printf("\nEnter your choice : ");
-        scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            printf("Enter the data : ");
-            scanf("%d", &data);
-            insert(data);
-            break;
-        case 2:
-            display();
-            break;
-        case 3:
-            printf("Enter the data : ");
-            scanf("%d", &data);
-            delete (data);
-            break;
-        case 4:
-            exit(1);
-        default:
-            printf("Wrong choice ");
-        }
-    }
-}
-
-void insert(int data)
-{
-    struct node *new_node = (struct node *)malloc(sizeof(struct node));
-    new_node->data = data;
-    new_node->next = NULL;
-    new_node->prev = NULL;
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
     if (head == NULL)
     {
-        head = new_node;
-        tail = new_node;
-    }
-    else
-    {
-        new_node->next = head;
-        head->prev = new_node;
-        head = new_node;
-    }
-}
-
-void display()
-{
-    struct node *temp = head;
-    if (head == NULL)
-    {
-        printf("List is empty");
+        head = newNode;
         return;
     }
-    printf("List is : ");
-    while (temp != NULL)
+
+    Node *current = head;
+
+    while (current->next != NULL && current->data != key)
+        current = current->next;
+
+    if (current->data == NULL)
     {
-        printf("%d ", temp->data);
-        temp = temp->next;
+        printf("Key not found\n");
+        return;
     }
+
+    newNode->prev = current->prev;
+    current->prev = newNode;
+
+    newNode->next = current;
+
+    if (newNode->prev != NULL)
+        newNode->prev->next = newNode;
+    else
+        head = newNode;
 }
 
 void delete(int data)
 {
-    struct node *temp = head;
-    if (head == NULL)
+    Node *temp = head, *prev = NULL, *next = NULL;
+
+    while (temp != NULL && temp->data != data)
     {
-        printf("List is empty");
-        return;
-    }
-    while (temp != NULL)
-    {
-        if (temp->data == data)
-        {
-            if (temp == head)
-            {
-                head = temp->next;
-                head->prev = NULL;
-            }
-            else if (temp == tail)
-            {
-                tail = temp->prev;
-                tail->next = NULL;
-            }
-            else
-            {
-                temp->prev->next = temp->next;
-                temp->next->prev = temp->prev;
-            }
-            free(temp);
-            printf("Element deleted");
-            return;
-        }
+        prev = temp;
         temp = temp->next;
     }
-    printf("Element not found");
+
+    if (temp == NULL)
+    {
+        printf("Data not found\n");
+        return;
+    }
+
+    next = temp->next;
+
+    if (prev == NULL)
+        head = next;
+    else
+        prev->next = next;
+
+    if (next != NULL)
+        next->prev = prev;
+
+    free(temp);
+}
+
+void display()
+{
+    Node *ptr = head;
+    printf("\nList: ");
+    while (ptr != NULL)
+    {
+        printf("%d ", ptr->data);
+        ptr = ptr->next;
+    }
+}
+
+int main(){
+    int choice, value, key;
+    while (1)
+    {
+        printf("\n\n***** MENU *****\n");
+        printf("\n1. Insert");
+        printf("\n2. Delete");
+        printf("\n3. Display");
+        printf("\n4. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("Enter the value to be inserted: ");
+            scanf("%d", &value);
+            printf("Enter the key: ");
+            scanf("%d", &key);
+            insert(value, key);
+            break;
+        case 2:
+            printf("Enter the value to be deleted: ");
+            scanf("%d", &value);
+            delete(value);
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            exit(0);
+        default:
+            printf("Invalid choice\n");
+        }
+    }
 }

@@ -20,39 +20,39 @@ void insert(char *name)
     Node *newNode = (Node *)malloc(sizeof(Node));
     strcpy(newNode->name, name); // copy name to newNode->name
     newNode->next = NULL;
-    if (head == NULL || strcmp(head->name, name) >= 0) // insert at the beginning 
+    if (head == NULL || strcmp(head->name, name) >= 0) // check if the list is empty or the new name is smaller than the first name
     {
-        newNode->next = head; 
-        head = newNode;
+        newNode->next = head; // insert the new node at the beginning
+        head = newNode;       // update the head
     }
     else
     {
-        Node *current = head;
-        while (current->next != NULL && strcmp(current->next->name, name) < 0)
-            current = current->next;
-        newNode->next = current->next;
-        current->next = newNode;
+        Node *current = head;                                                  // current is the node before the insertion point
+        while (current->next != NULL && strcmp(current->next->name, name) < 0) // finding the insertion point
+            current = current->next;                                           // move to the next node
+        newNode->next = current->next;                                         // insert the new node after current
+        current->next = newNode;                                               // update the next pointer of current
     }
 }
 
 void delete(char *name)
 {
     Node *temp = head, *prev;
-    if (temp != NULL && strcmp(temp->name, name) == 0)
+    if (temp != NULL && strcmp(temp->name, name) == 0) // check if the first node is the one to be deleted
     {
         head = temp->next;
         free(temp);
         return;
     }
-    while (temp != NULL && strcmp(temp->name, name) != 0)
+    while (temp != NULL && strcmp(temp->name, name) != 0) // find the node to be deleted
     {
-        prev = temp;
-        temp = temp->next;
+        prev = temp;       // keep track of the previous node
+        temp = temp->next; // move to the next node
     }
-    if (temp == NULL)
+    if (temp == NULL) // check if the node is not found
         return;
-    prev->next = temp->next;
-    free(temp);
+    prev->next = temp->next; // update the next pointer of the previous node
+    free(temp);              // free the memory
 }
 void display()
 {
